@@ -2,11 +2,27 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/signal2">派发与广播</router-link>
     </div>
+    <h3>msg: {{ msg }}</h3>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: "app",
+  data() {
+    return {
+      msg: ""
+    };
+  },
+  created() {
+    this.$on("dispatch-msg", msg => (this.msg = msg));
+  }
+};
+</script>
 
 <style lang="less">
 #app {
